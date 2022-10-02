@@ -1,0 +1,65 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI-Calculator</title>
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/bmi_style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <h2 class="text-info display-4 fw-bold">Calculate Your BMI</h2>
+            <input type="number" id="first" class="p-2 w-75 mb-2 fs-4 text-warning"
+                placeholder="Enter Your Weight in KG">
+            <input type="number" id="second" class="p-2 w-75 fs-4 mb-2 text-warning"
+                placeholder="Enter Your Height In Meters">
+            <br>
+            <input type="submit" value="submit" class="btn  btn-dark w-50" id="button">
+
+            <div class="col-12">
+                <input type="text" class="mt-5 p-2 w-50 bg-dark text-white" id="result" disabled placeholder="RESULT ">
+                <p class="result-statement text-danger fs-4"></p>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/assets/js/bootstrap.bundle.min.js"></script>
+<script>
+
+
+    var Weight = document.querySelector('#first');
+    var Height = document.querySelector('#second');
+    var button = document.querySelector("#button");
+    var result = document.querySelector("#result");
+    var stmt = document.querySelector(".result-statement");
+    var height, weight, BMI;
+
+    button.addEventListener('click', function () {
+        weight = Weight.value;
+        height = Height.value;
+        BMI = weight / (height ** height);
+        result.value = BMI;
+        console.log(BMI);
+
+        if (BMI < 18) {
+            stmt.innerText = "your BMI Falls with in the UNDERWEIGHT range ";
+        }
+        else if ((BMI > 18) && (BMI < 24)) {
+            stmt.innerText = "your BMI Falls with in the NORMAL range";
+        }
+        else if ((BMI > 24) && (BMI < 30)) {
+            stmt.innerText = "your BMI Falls with in the OVRWEIGHT range";
+        }
+        else {
+            stmt.innerText = "invalid choice";
+        }
+    });
+
+
+</script>
+
+</html>
